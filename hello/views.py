@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from .models import Greeting
 
 
 import requests
+
+id = None
 
 
 # def index(request):
@@ -20,6 +22,17 @@ def index(request):
         id = request.GET.get('id', 1)
     return render(request, "index.html", {"id": id})
 
+def next(request): 
+    if request.method == 'GET':
+        id = int(request.GET.get('id', 1))
+        id += 1
+    return redirect(f"/?id={id}")
+
+def prev(request): 
+    if request.method == 'GET':
+        id = int(request.GET.get('id', 1))
+        id -= 1
+    return redirect(f"/?id={id}")
 
 def db(request):
 
