@@ -5,14 +5,9 @@ from .models import Greeting
 
 
 import requests
+from .utils import get_original_text, get_mutated_text
 
-id = None
 
-
-# def index(request):
-#     r = requests.get('http://httpbin.org/status/418')
-#     print(r.text)
-#     return HttpResponse('<pre>' + r.text + '</pre>')
 
 # Create your views here.
 def index(request):
@@ -20,7 +15,8 @@ def index(request):
     # return HttpResponse('Hello from Python!')
     if request.method == 'GET':
         id = request.GET.get('id', 1)
-    return render(request, "index.html", {"id": id})
+
+    return render(request, "index.html", {"id": id, "original": get_original_text(id), "mutant": get_mutated_text(id)})
 
 def next(request): 
     if request.method == 'GET':
