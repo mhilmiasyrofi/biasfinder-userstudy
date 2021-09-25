@@ -8,7 +8,7 @@ def is_placeholder(token):
 
 
 def is_punctuation(token):
-    return token in string.punctuation
+    return token == "'s" or token in string.punctuation
 
 df = pd.read_csv("./notebook/gender-unlabelled.csv")
 
@@ -23,8 +23,8 @@ def get_mutated_text(id):
     return format_text(df.iloc[int(id)]["mutated_text"], get_template(id))
 
 def format_text(text, template):
-    left_mark = "<start>"
-    right_mark = "<end>"
+    left_mark = "<span style='background-color: #FFFF00'>"
+    right_mark = "</span>"
 
     i = 0
     j = 0
