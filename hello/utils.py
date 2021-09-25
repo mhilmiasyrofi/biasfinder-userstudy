@@ -3,9 +3,7 @@ import string
 
 
 def is_placeholder(token):
-    #     print(token)
     return token[0] == "<" and token[-1] == ">"
-
 
 def is_punctuation(token):
     return token == "'s" or token in string.punctuation
@@ -41,18 +39,28 @@ def format_text(text, template):
             fmt_text.append(text[i])
             i += 1
             j += 1
-            next_token = template[j]
-            while is_punctuation(next_token):
-                j += 1
+            if j < len(template):
                 next_token = template[j]
 
-            while i < len(text) and text[i] != next_token:
+                while j < len(template) and (is_punctuation(next_token) or is_placeholder(next_token)):
+                    j += 1
+                    if j < len(template):
+                        next_token = template[j]
+
+                while i < len(text) and text[i] != next_token:
+                    fmt_text.append(text[i])
+                    i += 1
+                fmt_text.append(right_mark)
+            else:
+                while i < len(text):
+                    fmt_text.append(text[i])
+                    i += 1
+                fmt_text.append(right_mark)
+
+        else:
+            if i < len(text):
                 fmt_text.append(text[i])
                 i += 1
-            fmt_text.append(right_mark)
-        else:
-            fmt_text.append(text[i])
-            i += 1
             j += 1
 
     return " ".join(fmt_text)
