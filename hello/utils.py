@@ -8,7 +8,7 @@ def is_placeholder(token):
 def is_punctuation(token):
     return token == "'s" or token in string.punctuation
 
-df = pd.read_csv("./notebook/mtnlp-gender-unlabelled.csv")
+df = pd.read_csv("./notebook/biasfinder-occupation-unlabelled.csv")
 
 
 def get_template(id):
