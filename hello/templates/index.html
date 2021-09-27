@@ -13,22 +13,23 @@
   </div>
 </div>
 <div class="container">
-  <form method="get">
-    <label for="id">Jump to ID:</label><br>
-    <input type="text" id="id" name="id" value="{{ id }}"><br>
-    <input type="submit" value="OK">
-  </form>
-  <br>
-  <br>
-  <div class="alert alert-info text-center" role="alert">
+  <div class="alert alert-info text-center" style="font-size:x-large;font-weight: bold;">
     current ID : {{ id }}
   </div>
   <div class="text-center">
     <a type="button" class="btn btn-lg btn-default"
-      href="http://biasfinder.herokuapp.com/prev?id={{id}}"><span
+      href="http://localhost:5000/prev?id={{id}}"><span
         class="glyphicon glyphicon-chevron-left"></span> Prev</a>
-    <a type="button" class="btn btn-lg btn-primary" href="http://biasfinder.herokuapp.com/next?id={{id}}"><span
+    <a type="button" class="btn btn-lg btn-primary" href="http://localhost:5000/next?id={{id}}"><span
         class="glyphicon glyphicon-chevron-right"></span> Next</a>
+  </div>
+  <div class="text-center">
+    <br>
+    <form method="get">
+      <label for="id">Jump to ID:</label>
+      <input type="text" id="id" name="id" value="{{ id }}">
+      <input type="submit" value="OK">
+    </form>
   </div>
   <hr>
   <div class="row">
