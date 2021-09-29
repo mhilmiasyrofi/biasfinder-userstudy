@@ -6,7 +6,7 @@ def is_placeholder(token):
     return token[0] == "<" and token[-1] == ">"
 
 def is_punctuation(token):
-    return token == "'s" or token in string.punctuation
+    return token == "'s" or token == "'ll" or token in string.punctuation
 
 df = pd.read_csv("./notebook/biasfinder-occupation-unlabelled.csv")
 
